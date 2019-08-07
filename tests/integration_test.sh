@@ -17,20 +17,18 @@
 # This is a simple integration test
 set -e
 
-TEST_FOLDER=tests
+TEST_FOLDER=${PWD}/tests
 
 # start Kafka in docker container
 docker-compose -p integration_test -f $TEST_FOLDER/docker-compose-kafka.yml up -d
 
 # simulate stream of alerts on test topics
-coverage run --rcfile .coveragerc --source=${PWD} $TEST_FOLDER/testProducer.py
+coverage run --rcfile ${PWD}/.coveragerc --source=${PWD} $TEST_FOLDER/testProducer.py
 
 # consume simulated stream of alerts
-coverage run --rcfile .coveragerc --source=${PWD} $TEST_FOLDER/testConsumer.py
+coverage run --rcfile ${PWD}/.coveragerc --source=${PWD} $TEST_FOLDER/testConsumer.py
 
-coverage combine
 coverage report
-coverage html
 
 # shut down kafka container
 docker-compose -p integration_test -f $TEST_FOLDER/docker-compose-kafka.yml down
