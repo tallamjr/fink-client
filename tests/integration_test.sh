@@ -21,10 +21,10 @@ set -e
 docker-compose -p integration_test -f docker-compose-kafka.yml up -d
 
 # simulate stream of alerts on test topics
-python testProducer.py &
+coverage run testProducer.py &
 
 # consume simulated stream of alerts
-python testConsumer.py
+coverage run testConsumer.py
 
 # shut down kafka container
 docker-compose -p integration_test -f docker-compose-kafka.yml down
