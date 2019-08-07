@@ -1,7 +1,7 @@
 [run]
 branch = false
 parallel = true
-data_file = ${PWD}/test/.coverage
+data_file = ${PWD}/.coverage
 omit=
     $SPARK_HOME/*
     setup.py
