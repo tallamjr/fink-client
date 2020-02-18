@@ -15,28 +15,29 @@
 """ Configuration file for the fink-client API.
 """
 # Fink broker credentials. Contact us to get them.
-username = "finkConsumer"
-password = "finkConsumer-secret"
-group_id = "spark-kafka-client"
+username = "tarek"
+password = None
+group_id = "lsstfr-tarek"
 
 # Timeout when polling alerts (seconds)
-maxtimeout = 2
+maxtimeout = 10
 
 # Allow to overwrite alerts and loop over a subset of inputs
 testmode = True
 
 # List of topic names you subscribed to
 # See https://fink-broker.readthedocs.io/en/latest/distribution/introduction/
-mytopics = ["rrlyr"]
+# mytopics = ["rrlyr_workshop"]
+mytopics = ["snialike_workshop"]
 
 # Servers from which data will be pulled
-servers = "localhost:9092,localhost:9093"
+servers = "134.158.74.95:24499,"
 
 # Incoming alert schema to decode the data. You need to specify full path.
 # If empty, the client will attempt to download the online latest version.
-schema = "/path/to/fink-client/schemas/distribution_schema_0p2.avsc"
+schema = "/Users/tallamjr/Github/fink-client/schemas/distribution_schema_0p2-live.avsc"
 
 # Monitoring database. It includes metadata for the client to run.
 # You need to specify the full path
 # If it does not exist, it will be automatically created by the client.
-db_path = '/path/to/fink-client/db/alert-monitoring.db'
+db_path = '/Users/tallamjr/Github/fink-client/db/alert-monitoring.db'
